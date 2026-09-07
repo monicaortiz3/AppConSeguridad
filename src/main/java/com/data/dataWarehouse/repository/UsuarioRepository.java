@@ -1,0 +1,11 @@
+package com.data.dataWarehouse.repository;
+import com.data.dataWarehouse.entity.Usuarios;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.Optional;
+
+public interface UsuarioRepository extends JpaRepository<Usuarios, Long> {
+
+    Optional<Usuarios> findByNombre(String nombre);
+    Optional<Usuarios> findByCorreo(String correo);
+}
