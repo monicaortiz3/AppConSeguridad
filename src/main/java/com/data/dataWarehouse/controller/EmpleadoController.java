@@ -3,6 +3,7 @@ package com.data.dataWarehouse.controller;
 import com.data.dataWarehouse.service.EmpleadoService;
 import com.data.dataWarehouse.entity.Empleados;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,7 +24,7 @@ public class EmpleadoController {
         return this.empleadoService.findAll();
     }
     @GetMapping(path = "/empleados{id}")
-    public Empleados findById(Long id){
+    public Empleados findById(@PathVariable Long id){
         return this.empleadoService.findById(id);
     }
 }
