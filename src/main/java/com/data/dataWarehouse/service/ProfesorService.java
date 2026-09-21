@@ -1,10 +1,9 @@
-package com.data.dataWarehouse.security;
+package com.data.dataWarehouse.service;
 
 import com.data.dataWarehouse.entity.Profesor;
 import com.data.dataWarehouse.repository.ProfesorRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service

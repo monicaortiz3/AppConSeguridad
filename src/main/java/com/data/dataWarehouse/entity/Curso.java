@@ -4,7 +4,6 @@ package com.data.dataWarehouse.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
-import tools.jackson.databind.annotation.JsonAppend;
 
 @Entity
 @Table(name = "cursos")
