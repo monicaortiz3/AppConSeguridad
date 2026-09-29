@@ -1,5 +1,6 @@
 package com.data.dataWarehouse.service;
 
+import com.data.dataWarehouse.constants.DummyData;
 import com.data.dataWarehouse.entity.Clientes;
 import com.data.dataWarehouse.repository.ClientesRepository;
 import org.springframework.stereotype.Service;
@@ -16,10 +17,13 @@ public class ClienteService {
     }
 
     public List<Clientes> findAll(){
-        return this.clientesRepository.findAll();
+        // return this.clientesRepository.findAll();
+        DummyData.initializeData();
+        return DummyData.clientesList;
     }
     public Clientes findById(Long id){
-        return this.clientesRepository.findById(id).get();
+        DummyData.initializeData();
+        return DummyData.clientesList.get(id.intValue());
     }
 
 
