@@ -1,4 +1,5 @@
 package com.data.dataWarehouse.service;
+import com.data.dataWarehouse.constants.DummyData;
 import com.data.dataWarehouse.entity.*;
 import com.data.dataWarehouse.repository.SucursalRepository;
 import org.springframework.stereotype.Service;
@@ -15,9 +16,15 @@ public class SucursalService {
     }
 
     public List<Sucursales> findAll(){
-        return this.sucursalRepository.findAll();
+
+        //return this.sucursalRepository.findAll();
+        DummyData.initializeData();
+        return DummyData.sucursalesList;
     }
     public Sucursales findById(Long id){
-        return this.sucursalRepository.findById(id).get();
+
+        //return this.sucursalRepository.findById(id).get();
+        DummyData.initializeData();
+        return DummyData.sucursalesList.get(id.intValue() - 1);
     }
 }

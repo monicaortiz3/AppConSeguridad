@@ -1,5 +1,6 @@
 package com.data.dataWarehouse.service;
 
+import com.data.dataWarehouse.constants.DummyData;
 import com.data.dataWarehouse.entity.Productos;
 import com.data.dataWarehouse.repository.ProductoRepository;
 import org.springframework.stereotype.Service;
@@ -15,9 +16,15 @@ public class ProductosService {
         this.productoRepository = productoRepository;
     }
     public List<Productos> findAll(){
-        return this.productoRepository.findAll();
+
+        //return this.productoRepository.findAll();
+        DummyData.initializeData();
+        return DummyData.productosList;
     }
     public Productos findById(Long id){
-        return this.productoRepository.findById(id).get();
+
+        //return this.productoRepository.findById(id).get();
+        DummyData.initializeData();
+        return DummyData.productosList.get(id.intValue() - 1);
     }
 }

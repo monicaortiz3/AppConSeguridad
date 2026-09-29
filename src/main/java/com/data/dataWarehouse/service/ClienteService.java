@@ -23,7 +23,7 @@ public class ClienteService {
     }
     public Clientes findById(Long id){
         DummyData.initializeData();
-        return DummyData.clientesList.get(id.intValue());
+        return DummyData.clientesList.get(id.intValue() - 1);
     }
 
 
