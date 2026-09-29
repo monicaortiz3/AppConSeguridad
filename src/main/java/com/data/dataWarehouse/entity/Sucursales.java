@@ -10,6 +10,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 @Getter
@@ -41,10 +42,18 @@ public class Sucursales {
 
     @Column(name = "fecha_apertura")
     @PastOrPresent(message = "La fecha de registro no puede ser una fecha futura")
-    private Date fechaApertura;
+    private LocalDate fechaApertura;
 
     @OneToMany(mappedBy = "sucursales")
     private List<Empleados> empleadosList;
+
+    public Sucursales(Long idSucursal, String nombre, String ciudad, String estado, LocalDate fechaApertura) {
+        this.idSucursal = idSucursal;
+        this.nombre = nombre;
+        this.ciudad = ciudad;
+        this.estado = estado;
+        this.fechaApertura = fechaApertura;
+    }
 
     public void reglaETLNombreSucursales(){
         if (this.nombre == null || this.nombre.isBlank()){
