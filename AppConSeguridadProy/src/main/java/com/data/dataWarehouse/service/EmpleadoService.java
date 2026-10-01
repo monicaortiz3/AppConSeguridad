@@ -10,11 +10,6 @@ import java.util.List;
 @Service
 public class EmpleadoService {
 
-    private EmpleadoRepsotory empleadoRepository;
-
-    public EmpleadoService(EmpleadoRepsotory empleadoRepsotory){
-        this.empleadoRepository = empleadoRepsotory;
-    }
     public List<Empleados> findAll(){
 
         //return this.empleadoRepository.findAll();

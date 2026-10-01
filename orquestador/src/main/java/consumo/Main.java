@@ -88,6 +88,31 @@ public class Main {
     }
 
     public static void validaEmpleado(Empleados empleado, int idLista){
+        if(!esNumeroLongValido(empleado.getIdEmpleado())){
+            logger.info("Empleado [{}] : Error en el id - No puede ser null ni menor o igual a 0.", idLista);
+        }
+        if (!esCadenaValida(empleado.getNombre())){
+            logger.info("Empleado [{}] : Error en el nombre - No puede ser null o vacío.", idLista);
+        }else{
+            String nombreLimpio = empleado.getNombre().trim().replace("  ", "");
+            nombreLimpio = nombreLimpio.substring(0,1).toUpperCase() + nombreLimpio.substring(1); // normalizar mayusculas y minusculas
+            empleado.setNombre(nombreLimpio);
+        }
+        if (!esCadenaValida(empleado.getApellido())){
+            logger.info("Empleado [{}] : Error en el apellido - No puede ser null o vacío.", idLista);
+        }else {
+            String apellidoLimpio = empleado.getApellido().trim().replace("  ", "");
+            apellidoLimpio = apellidoLimpio.substring(0, 1).toUpperCase() + apellidoLimpio.substring(1); // normalizar mayusculas y minusculas
+            empleado.setApellido(apellidoLimpio);
+        }
+        if (!esCadenaValida(empleado.getPuesto())){
+            logger.info("Empleado [{}] : Error en el puesto -No puede ser null o vacío", idLista);
+        }else{
+            String puestoLimpio = empleado.getPuesto().trim().replace("  ", "");
+        }
+        //id_sucursal		No puede ser null ni menor o igual a 0.
+
+
 
     }
 
@@ -99,20 +124,20 @@ public class Main {
         if(!esCadenaValida(producto.getNombre())){ // pedro
             logger.info("Producto [{}] : Error en el nombre - No puede ser null o vacío.", idLista);
         }else{
-            // quitar espacios innecesarios
+           String nombreLimpio = producto.getNombre().trim().replaceAll("\\s+", " ");
         }
 
         if(!esCadenaValida(producto.getDescripcion())){
-            logger.info("Producto [{}] : Error en el nombre - No puede ser null o vacío.", idLista);
+            producto.setDescripcion(null);
         }else{
             producto.setDescripcion(producto.getDescripcion().trim());
         }
 
-        if(!esNumeroDecimalValido(producto.getPrecio())){
+        if (!esNumeroDecimalValido(producto.getPrecio()) || producto.getPrecio() <= 0){
             logger.info("Producto [{}] : Error en el precio - No puede ser null y debe ser mayor que 0", idLista);
         }
 
-        if(!esNumeroIntegerValido(producto.getStock())){
+        if (!esNumeroIntegerValido(producto.getStock()) || producto.getStock() < 0){
             logger.info("Producto [{}] : Error en el stock - No puede ser null y debe ser mayor que 0", idLista);
         }
 
@@ -120,6 +145,31 @@ public class Main {
 
 
     public static void validaSucursal(Sucursales sucursales, int idLista){
+        if(!esNumeroLongValido(sucursales.getIdSucursal())){
+            logger.info("Sucursal [{}] : Error en el id - No puede ser null ni menor o igual a 0.", idLista);
+        }
+        if (!esCadenaValida(sucursales.getNombre())){
+            logger.info("Sucursal [{}] : Error en el nombre - No puede ser null o vacío.", idLista);
+        }else{
+            String nombreLimpio = sucursales.getNombre().trim().replace("  ", "");
+            nombreLimpio = nombreLimpio.substring(0,1).toUpperCase() + nombreLimpio.substring(1); // normalizar mayusculas y minusculas
+            sucursales.setNombre(nombreLimpio);
+        }
+        if (!esCadenaValida(sucursales.getCiudad())) {
+            logger.info("Sucursal [{}] : Error en la ciudad -No puede ser null o vacío", idLista);
+        }else{
+            String ciudadLimpia = sucursales.getCiudad().trim().replaceAll("\\s+", " ").toLowerCase();
+        }
+        if (!esCadenaValida(sucursales.getEstado())) {
+            logger.info("Sucursal [{}] : Error en el estado -No puede ser null o vacío", idLista);
+        }else {
+            String ciudadLimpia = sucursales.getCiudad().trim().replaceAll("\\s+", " ").toLowerCase();
+        }
+        if (!fechaValida(sucursales.getFechaApertura())||
+                sucursales.getFechaApertura().isAfter(LocalDate.now())){
+            logger.info("Sucursal [{}] : Error en la fecha de apertura - No puede ser null ni una fecha futura", idLista);
+
+        }
 
     }
 

@@ -10,12 +10,6 @@ import java.util.List;
 @Service
 public class ClienteService {
 
-    private ClientesRepository clientesRepository;
-
-    public ClienteService(ClientesRepository clientesRepository){
-        this.clientesRepository = clientesRepository;
-    }
-
     public List<Clientes> findAll(){
         // return this.clientesRepository.findAll();
         DummyData.initializeData();
